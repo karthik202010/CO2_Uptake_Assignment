@@ -1,0 +1,52 @@
+---
+title: "Reproducible Pitch CO2 Uptake"
+author: "Karthik Muthuveeramani"
+date: "23/07/2021"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Overview CO2 Uptake
+
+This is a part of the Week4 Assignment to prepare a Shiny Application and a Reproducible Pitch
+
+I have used the CO2 data available as part of R datasets. I have built a simple application which builds a basic lm model and predicts the CO2 uptake based on values chosen for ambient carbon dioxide concentrations, Plant unique identifier, Type or origin of the plant and Treatment.
+
+The app is available in the link:
+https://karthikvmv.shinyapps.io/co2_uptake/
+
+
+
+## Sample of CO2 Data
+
+Below we have a sample of the CO2 data used in our assignment
+
+```{r code_head, comment="",echo=TRUE}
+head(CO2)
+```
+
+## Explanation of the CO2 Shiny App
+
+The following are the input sources
+
+- a slider input for ambient CO2 concentrations. With values ranging from 90 to 1000 and default value of 100
+- 3 radio buttons - one each for Plant, Type and Treatment
+- Submit button to submit our choices
+We have two tabs
+- one for the prediction (gives the predicted CO2 uptake value)
+- one for plots(CO2 uptake against each of the features. Note: The predicted value is shown in the plot with CO2 uptake vs ambient CO2 concentrations)
+
+## Plot CO2 Uptake vs Ambient CO2 Concentrations
+
+This Ambient CO2 concentrations drives the CO2 Uptake values.
+Can be checked in the shiny app by changing the values.
+```{r plot_CO2, comment=""}
+plot(CO2$conc, CO2$uptake, xlab = "Ambient carbon dioxide concentrations(mL/L)",
+             ylab = "CO2 uptake rates(umol/m^2 sec)", bty = "n", pch = 16,
+             xlim = c(50,1500), ylim = c(0,100))
+
+```
+
